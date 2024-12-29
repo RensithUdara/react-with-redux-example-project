@@ -1,16 +1,27 @@
 const initialState = {
-    noOfFruits: 10
+  loading: false,
+  album: [],
+  error: null
+
 }
 
-export default function fruitReducer(state = initialState, action) {
-  switch(action.type) {
-    case 'BUY_FRUIT':
+export default function albumReducer(state = initialState, action) {
+  switch (action.type) {
+    case 'FETCH_ALBUM_LOADING':
       return {
         ...state,
-        noOfFruits: state.noOfFruits - action.payload
+        loading: action.payload
+      }
+    case 'FETCH_ALBUM_SUCCESS':
+      return {
+        album: action.payload,
+      }
+    case 'FETCH_ALBUM_ERROR':
+      return {
+        error: action.payload
       }
     default:
       return state
   }
-    
+
 }
