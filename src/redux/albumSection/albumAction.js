@@ -31,6 +31,9 @@ export function fetchAlbums() {
         } catch (error) {
             dispatch(fetchAlbumError(error.message));
         }
+        setTimeout(() => {
+            dispatch(fetchAlbumLoading(false));
+        }, 5000);
         dispatch(fetchAlbumLoading(false));
     }
 }
